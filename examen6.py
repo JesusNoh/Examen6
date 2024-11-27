@@ -28,16 +28,36 @@ def quicksort(alumnos):
         return quicksort(izquierda) + medio + quicksort(derecha)
 
 def mostrar_alumnos(alumnos):
+    # Encabezados de la tabla
+    print(f"{'Nombre':<20} {'Matrícula':<15} {'Materias Aprobadas':<20} {'Promedio':<10}")
+    print("-" * 75)  # Línea separadora
+    
     for alumno in alumnos:
-        print(alumno)
+        print(f"{alumno.nombre:<20} {alumno.matricula:<15} {alumno.materias_aprobadas:<20} {alumno.promedio:<10}")
 
 def ingresar_alumnos(cantidad):
     lista_alumnos = []
     for _ in range(cantidad):
         nombre = input("Ingrese el nombre del alumno: ")
         matricula = input("Ingrese la matrícula del alumno: ")
-        materias_aprobadas = int(input("Ingrese el número de materias aprobadas: "))
-        promedio = float(input("Ingrese el promedio del alumno: "))
+        
+        while True:
+            try:
+                materias_aprobadas = int(input("Ingrese el número de materias aprobadas: "))
+                if materias_aprobadas < 0:
+                    raise ValueError("El número de materias aprobadas no puede ser negativo.")
+                break
+            except ValueError as e:
+                print(e)
+        
+        while True:
+            try:
+                promedio = float(input("Ingrese el promedio del alumno: "))
+                if not (0 <= promedio <= 10):
+                    raise ValueError("El promedio debe estar entre 0 y 10.")
+                break
+            except ValueError as e:
+                print(e)
         
         nuevo_alumno = Alumno(nombre, matricula, materias_aprobadas, promedio)
         lista_alumnos.append(nuevo_alumno)
@@ -72,6 +92,7 @@ def main():
                     mostrar_alumnos(alumnos)
                 
                 elif opcion_ordenamiento == '2':
+                    # Aquí se asigna correctamente el resultado del Quicksort
                     alumnos_ordenados = quicksort(alumnos)
                     print("\nAlumnos ordenados por número de materias aprobadas:")
                     mostrar_alumnos(alumnos_ordenados)
@@ -101,6 +122,7 @@ def main():
                     mostrar_alumnos(alumnos)
                 
                 elif opcion_ordenamiento == '2':
+                    # Aquí se asigna correctamente el resultado del Quicksort
                     alumnos_ordenados = quicksort(alumnos)
                     print("\nAlumnos ordenados por número de materias aprobadas:")
                     mostrar_alumnos(alumnos_ordenados)
