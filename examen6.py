@@ -28,10 +28,9 @@ def quicksort(alumnos):
         return quicksort(izquierda) + medio + quicksort(derecha)
 
 def mostrar_alumnos(alumnos):
-    # Encabezados de la tabla
     print(f"{'Nombre':<20} {'Matrícula':<15} {'Materias Aprobadas':<20} {'Promedio':<10}")
-    print("-" * 75)  # Línea separadora
-    
+    print("-" * 75)
+
     for alumno in alumnos:
         print(f"{alumno.nombre:<20} {alumno.matricula:<15} {alumno.materias_aprobadas:<20} {alumno.promedio:<10}")
 
@@ -92,7 +91,6 @@ def main():
                     mostrar_alumnos(alumnos)
                 
                 elif opcion_ordenamiento == '2':
-                    # Aquí se asigna correctamente el resultado del Quicksort
                     alumnos_ordenados = quicksort(alumnos)
                     print("\nAlumnos ordenados por número de materias aprobadas:")
                     mostrar_alumnos(alumnos_ordenados)
@@ -122,7 +120,6 @@ def main():
                     mostrar_alumnos(alumnos)
                 
                 elif opcion_ordenamiento == '2':
-                    # Aquí se asigna correctamente el resultado del Quicksort
                     alumnos_ordenados = quicksort(alumnos)
                     print("\nAlumnos ordenados por número de materias aprobadas:")
                     mostrar_alumnos(alumnos_ordenados)
